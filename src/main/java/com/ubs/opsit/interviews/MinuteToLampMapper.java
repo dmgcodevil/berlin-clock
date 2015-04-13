@@ -17,7 +17,7 @@ import static java.util.stream.Stream.concat;
  * <p>
  * Created by dmgcodevil on 4/13/2015.
  */
-public class MinuteToLamp implements TimeUnitToLampMapper {
+public class MinuteToLampMapper implements TimeUnitToLampMapper {
 
 
     private static final int ELAPSED_MINUTES = 5;

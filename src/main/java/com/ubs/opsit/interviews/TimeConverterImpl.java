@@ -25,9 +25,9 @@ public class TimeConverterImpl implements TimeConverter {
 
     static {
         LAMP_MAPPERS = new HashMap<>();
-        LAMP_MAPPERS.put(HOURS_IDX, new HourToLamp());
-        LAMP_MAPPERS.put(MINUTES_IDX, new MinuteToLamp());
-        LAMP_MAPPERS.put(SECONDS_IDX, new SecondToLamp());
+        LAMP_MAPPERS.put(HOURS_IDX, new HourToLampMapper());
+        LAMP_MAPPERS.put(MINUTES_IDX, new MinuteToLampMapper());
+        LAMP_MAPPERS.put(SECONDS_IDX, new SecondToLampMapper());
     }
 
     @Override

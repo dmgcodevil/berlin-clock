@@ -14,7 +14,7 @@ import static java.util.stream.Stream.concat;
  *
  * Created by dmgcodevil on 4/13/2015.
  */
-public class HourToLamp implements TimeUnitToLampMapper {
+public class HourToLampMapper implements TimeUnitToLampMapper {
 
     /**
      * Converts the given hours into two lines.

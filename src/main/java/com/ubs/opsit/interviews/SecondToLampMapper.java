@@ -5,7 +5,7 @@ package com.ubs.opsit.interviews;
  *
  * Created by dmgcodevil on 4/13/2015.
  */
-public class SecondToLamp implements TimeUnitToLampMapper {
+public class SecondToLampMapper implements TimeUnitToLampMapper {
 
     /**
      * Converts seconds to indicator line.
