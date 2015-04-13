@@ -17,60 +17,60 @@ public class HourToLampMapperTest {
     public void apply_given0HoursShouldReturnCorrespondingLamps() {
         // given
         int hours = 0;
-        String lampsHourFiveHours = "OOOO";
-        String lampsHourLeftHours = "OOOO";
-        
+        String lampsFiveHours = "OOOO";
+        String lampsLeftHours = "OOOO";
+
         // when
         String[] lamps = hourToLampMapper.apply(hours).split(System.lineSeparator());
 
         // then
-        assertEquals(lampsHourFiveHours, lamps[0]);
-        assertEquals(lampsHourLeftHours, lamps[1]);
+        assertEquals(lampsFiveHours, lamps[0]);
+        assertEquals(lampsLeftHours, lamps[1]);
     }
 
     @Test
     public void apply_given13HoursShouldReturnCorrespondingLamps() {
         // given
         int hours = 13;
-        String lampsHourFiveHours = "RROO";
-        String lampsHourLeftHours = "RRRO";
+        String lampsFiveHours = "RROO";
+        String lampsLeftHours = "RRRO";
 
         // when
         String[] lamps = hourToLampMapper.apply(hours).split(System.lineSeparator());
 
         // then
-        assertEquals(lampsHourFiveHours, lamps[0]);
-        assertEquals(lampsHourLeftHours, lamps[1]);
+        assertEquals(lampsFiveHours, lamps[0]);
+        assertEquals(lampsLeftHours, lamps[1]);
     }
 
     @Test
     public void apply_given23HoursShouldReturnCorrespondingLamps() {
         // given
         int hours = 23;
-        String lampsHourFiveHours = "RRRR";
-        String lampsHourLeftHours = "RRRO";
+        String lampsFiveHours = "RRRR";
+        String lampsLeftHours = "RRRO";
 
         // when
         String[] lamps = hourToLampMapper.apply(hours).split(System.lineSeparator());
 
         // then
-        assertEquals(lampsHourFiveHours, lamps[0]);
-        assertEquals(lampsHourLeftHours, lamps[1]);
+        assertEquals(lampsFiveHours, lamps[0]);
+        assertEquals(lampsLeftHours, lamps[1]);
     }
 
     @Test
     public void apply_given24HoursShouldReturnCorrespondingLamps() {
         // given
         int hours = 24;
-        String lampsHourFiveHours = "RRRR";
-        String lampsHourLeftHours = "RRRR";
+        String lampsFiveHours = "RRRR";
+        String lampsLeftHours = "RRRR";
 
         // when
         String[] lamps = hourToLampMapper.apply(hours).split(System.lineSeparator());
 
         // then
-        assertEquals(lampsHourFiveHours, lamps[0]);
-        assertEquals(lampsHourLeftHours, lamps[1]);
+        assertEquals(lampsFiveHours, lamps[0]);
+        assertEquals(lampsLeftHours, lamps[1]);
     }
 
 }
