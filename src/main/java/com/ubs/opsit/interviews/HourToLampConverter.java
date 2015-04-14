@@ -19,6 +19,7 @@ import static java.util.stream.Stream.concat;
 public class HourToLampConverter implements TimeUnitToLampConverter {
 
     private static final MaxValueValidator MAX_VALUE_VALIDATOR = new MaxValueValidator(24);
+    private static final int ELAPSED_HOURS = 5;
 
     /**
      * Converts the given hours into two lines.
@@ -31,15 +32,16 @@ public class HourToLampConverter implements TimeUnitToLampConverter {
     @Override
     public String convert(Integer hours) throws IllegalArgumentException {
         MAX_VALUE_VALIDATOR.validate(hours);
-        int fiveHours = hours / 5;
-        int oneHour = hours % 5;
+        int fiveHours = hours / ELAPSED_HOURS;
+        int oneHour = hours % ELAPSED_HOURS;
         return Stream.of(hoursLamps(fiveHours), hoursLamps(oneHour)).collect(joining(lineSeparator()));
     }
 
     private String hoursLamps(int hours) {
+        int totalLamsInRow = 4;
         return concat(
                 range(0, hours).mapToObj(red()),
-                range(hours, 4).mapToObj(off()))
+                range(hours, totalLamsInRow).mapToObj(off()))
                 .collect(joining());
     }
 }
