@@ -12,22 +12,22 @@ import static java.util.stream.Collectors.joining;
 
 /**
  * Implementation of {@link TimeConverter} interface.
- *
+ * <p>
  * Created by dmgcodevil on 4/13/2015.
  */
 public class TimeConverterImpl implements TimeConverter {
 
-    private static final Map<Integer, TimeUnitToLampMapper> LAMP_MAPPERS;
+    private static final Map<Integer, TimeUnitToLampConverter> LAMP_CONVERTERS;
 
     private static final int HOURS_IDX = 0;
     private static final int MINUTES_IDX = 1;
     private static final int SECONDS_IDX = 2;
 
     static {
-        LAMP_MAPPERS = new HashMap<>();
-        LAMP_MAPPERS.put(HOURS_IDX, new HourToLampMapper());
-        LAMP_MAPPERS.put(MINUTES_IDX, new MinuteToLampMapper());
-        LAMP_MAPPERS.put(SECONDS_IDX, new SecondToLampMapper());
+        LAMP_CONVERTERS = new HashMap<>();
+        LAMP_CONVERTERS.put(HOURS_IDX, new HourToLampConverter());
+        LAMP_CONVERTERS.put(MINUTES_IDX, new MinuteToLampConverter());
+        LAMP_CONVERTERS.put(SECONDS_IDX, new SecondToLampConverter());
     }
 
     @Override
@@ -43,6 +43,6 @@ public class TimeConverterImpl implements TimeConverter {
     }
 
     private String toLamp(int[] parts, int current) {
-        return LAMP_MAPPERS.get(current).apply(parts[current]);
+        return LAMP_CONVERTERS.get(current).convert(parts[current]);
     }
 }

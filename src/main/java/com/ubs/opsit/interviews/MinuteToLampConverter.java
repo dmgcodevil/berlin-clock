@@ -1,5 +1,7 @@
 package com.ubs.opsit.interviews;
 
+import com.ubs.opsit.interviews.validation.MaxValueValidator;
+
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -17,9 +19,9 @@ import static java.util.stream.Stream.concat;
  * <p>
  * Created by dmgcodevil on 4/13/2015.
  */
-public class MinuteToLampMapper implements TimeUnitToLampMapper {
+public class MinuteToLampConverter implements TimeUnitToLampConverter {
 
-
+    private static final MaxValueValidator MAX_VALUE_VALIDATOR = new MaxValueValidator(59);
     private static final int ELAPSED_MINUTES = 5;
 
     /**
@@ -31,7 +33,8 @@ public class MinuteToLampMapper implements TimeUnitToLampMapper {
      * @return result row is composed of 11 lights
      */
     @Override
-    public String apply(Integer minutes) {
+    public String convert(Integer minutes) {
+        MAX_VALUE_VALIDATOR.validate(minutes);
         return Stream.of(
                 fiveMinutesLamps(minutes),
                 oneMinuteLamps(minutes))

@@ -1,11 +1,15 @@
 package com.ubs.opsit.interviews;
 
+import com.ubs.opsit.interviews.validation.MaxValueValidator;
+
 /**
  * Converts seconds to lamp.
- *
+ * <p>
  * Created by dmgcodevil on 4/13/2015.
  */
-public class SecondToLampMapper implements TimeUnitToLampMapper {
+public class SecondToLampConverter implements TimeUnitToLampConverter {
+
+    private static final MaxValueValidator MAX_VALUE_VALIDATOR = new MaxValueValidator(59);
 
     /**
      * Converts seconds to indicator line.
@@ -16,7 +20,8 @@ public class SecondToLampMapper implements TimeUnitToLampMapper {
      * @return flashing lamp
      */
     @Override
-    public String apply(Integer seconds) {
+    public String convert(Integer seconds) throws IllegalArgumentException {
+        MAX_VALUE_VALIDATOR.validate(seconds);
         return (seconds % 2 == 0) ? Lamp.YELLOW.getShortcut() : Lamp.OFF.getShortcut();
     }
 }

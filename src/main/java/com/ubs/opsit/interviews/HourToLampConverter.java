@@ -1,5 +1,7 @@
 package com.ubs.opsit.interviews;
 
+import com.ubs.opsit.interviews.validation.MaxValueValidator;
+
 import java.util.stream.Stream;
 
 import static com.ubs.opsit.interviews.Lamp.off;
@@ -11,10 +13,12 @@ import static java.util.stream.Stream.concat;
 
 /**
  * Converts hours to lamps.
- *
+ * <p>
  * Created by dmgcodevil on 4/13/2015.
  */
-public class HourToLampMapper implements TimeUnitToLampMapper {
+public class HourToLampConverter implements TimeUnitToLampConverter {
+
+    private static final MaxValueValidator MAX_VALUE_VALIDATOR = new MaxValueValidator(24);
 
     /**
      * Converts the given hours into two lines.
@@ -25,7 +29,8 @@ public class HourToLampMapper implements TimeUnitToLampMapper {
      * @return lamps
      */
     @Override
-    public String apply(Integer hours) {
+    public String convert(Integer hours) throws IllegalArgumentException {
+        MAX_VALUE_VALIDATOR.validate(hours);
         int fiveHours = hours / 5;
         int oneHour = hours % 5;
         return Stream.of(hoursLamps(fiveHours), hoursLamps(oneHour)).collect(joining(lineSeparator()));
